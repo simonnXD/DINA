@@ -184,7 +184,7 @@ def run_neat(config_file, font, ranking_system):
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
 
-    for gen in range(10): # Número de gerações
+    for gen in range(100000): # Número de gerações
         p.run(lambda genomes, config: main(genomes, config, use_neat=True, font=font, ranking_system=ranking_system), 1)
 
     ranking_system.save_ranking('ranking_file.pkl')
