@@ -3,7 +3,6 @@ import random
 import neat
 import os
 import pickle
-#Ryan o pica das galaxias entrou no projeto
 
 # Definição de constantes para o jogo
 SCREEN_WIDTH, SCREEN_HEIGHT = 1000, 600
@@ -160,7 +159,7 @@ def main(genomes, config, use_neat=False, font=None, ranking_system=None):
         for idx in sorted(remove_indices, reverse=True):
             if use_neat:
                 genomes[idx][1].fitness = dinos[idx].score
-                ranking_system.update_ranking(genomes[idx][1], dinos[idx].score)
+                ranking_system.update_ranking(genomes[idx][1].key, dinos[idx].score)
             del dinos[idx]
             del nets[idx]
 
@@ -185,7 +184,7 @@ def run_neat(config_file, font, ranking_system):
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
 
-    for gen in range(50): # Número de gerações
+    for gen in range(10): # Número de gerações
         p.run(lambda genomes, config: main(genomes, config, use_neat=True, font=font, ranking_system=ranking_system), 1)
 
     ranking_system.save_ranking('ranking_file.pkl')
