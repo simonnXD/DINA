@@ -3,6 +3,7 @@ import random
 import neat
 import os
 import pickle
+#Ryan o pica das galaxias entrou no projeto
 
 # Definição de constantes para o jogo
 SCREEN_WIDTH, SCREEN_HEIGHT = 1000, 600
